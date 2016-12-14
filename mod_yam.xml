@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1" client="site" method="upgrade">
+	<name>Я.Метрика API модуль v1</name>
+	<author>CB9TOIIIA</author>
+	<creationDate>December 2016</creationDate>
+	<copyright>Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>cb9toiiia@gmail.com</authorEmail>
+	<authorUrl>cb9t.ru</authorUrl>
+	<version>3.0.0</version>
+	<description>Модуль Я.Метрики с графиком и табличным представлением данных. Идеально для страницы рекламы. Все данные получаются через библиотеку по API v1.</description>
+	<files>
+		<filename module="mod_yam">mod_yam.php</filename>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+		<folder>tmpl</folder>
+		<folder>vendor</folder>
+		<folder>elements</folder>
+		<folder>assets</folder>
+	</files>
+
+	<config>
+		<fields name="params">
+<fieldset name="yandex" label="Яндекс.Метрика" addfieldpath="modules/mod_yam/elements">
+		      <field
+		        name="app_id"
+		        type="text"
+		        default=""
+		        label="app_id"
+		        description="" />
+		      <field
+		        name="app_password"
+		        type="text"
+		        default=""
+		        label="app_password"
+		        description="" />
+		      <field
+		        name="app_token"
+		        type="text" default=""
+		        label="app_token"
+		        description="" />
+		      <field
+		        name="counter_id"
+		        type="text"
+		        default=""
+		        label="counter_id"
+		        description="" />
+		      <field
+		        name="counter_id"
+		        type="text"
+		        label="№ счётчика"
+		        description="№ счётчика метрики"
+		        default=""/>
+		      <field
+		        name="app_url"
+		        type="AppUrl"
+		        label="Создать приложение"
+		        description="Создать приложение для получения OAuth-токена. Указать права 'Яндекс.Метрика' - 'Получение статистики', чтение параметров своих и доверенных счётчиков. В поле 'Callback URL' вставить урл нажатием на 'Подставить URL для разработки'"
+		        default=""/>
+		      <field
+		        name="app_id"
+		        type="text"
+		        label="ID приложения"
+		        description="ID приложения"
+		        default=""/>
+		      <field
+		        name="app_password"
+		        type="text"
+		        label="Пароль"
+		        description="Пароль приложения"
+		        default=""/>
+		      <field
+		        name="token_url"
+		        type="TokenUrl"
+		        label="Получить токен"
+		        description="Получить OAuth-токен и вписать его в настройки. Для его получения вы должны быть авторизованы на сайте яндекса."
+		        default=""/>
+		      <field
+		        name="app_token"
+		        type="text"
+		        label="Токен"
+		        description="Токен приложения"
+		        default=""/>
+
+			<field
+				name="threshold"
+				type="text"
+				label="Порог посещаемости (threshold)"
+				description="Данный порог рисует красную границу на графике"
+				size="50"
+				required="true"
+				default="1000"
+			/>
+			<field
+				name="text30"
+				type="text"
+				label="Текст перед графиком"
+				description="Текст перед графиком"
+				size="50"
+				default="График просмотров за 30 дней"
+			/>
+			<field
+				name="text7"
+				type="text"
+				label="Порог посещаемости (threshold)"
+				description="Текст перед таблицой"
+				size="50"
+				default="Количество просмотров и посетителей за 7 дней"
+			/>
+
+			<field name="legendpv"
+						 type="radio"
+						 class="btn-group btn-group-yesno"
+						 default="1"
+						 label="Показывать легенду?"
+						 description="Легенда: просмотры и посетители">
+					<option value="0">Нет</option>
+					<option value="1">Да</option>
+</field>
+
+</fieldset>
+
+			<fieldset name="advanced">
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC"
+				/>
+
+				<field
+					name="cache"
+					type="list"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					description="COM_MODULES_FIELD_CACHING_DESC"
+					default="1"
+					>
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+
+				<field
+					name="cache_time"
+					type="text"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+					description="COM_MODULES_FIELD_CACHE_TIME_DESC"
+					default="900"
+				/>
+
+				<field
+					name="cachemode"
+					type="hidden"
+					default="static"
+					>
+					<option value="static"></option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
